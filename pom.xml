@@ -13,7 +13,7 @@
 	<version>2.4.2-SNAPSHOT</version>
 
 	<name>A&amp;G Web Plugin</name>
-	<description>Analyze HTML (also within PHP/Ruby/etc. templates) and JSP/JSF code.</description>
+	<description>Custom rules for checking JSP files</description>
 
 	<properties>
 		<sonar.version>3.7</sonar.version>
@@ -22,20 +22,12 @@
 		<sonar.pluginClass>org.sonar.plugins.agweb.WebPlugin</sonar.pluginClass>
 	</properties>
 
-	<url>http://docs.codehaus.org/display/SONAR/Web+Plugin</url>
-	<issueManagement>
-		<system>JIRA</system>
-		<url>https://jira.codehaus.org/browse/SONARWEB</url>
-	</issueManagement>
-	<ciManagement>
-		<system>Cloudbees</system>
-		<url>http://sonarplugins.ci.cloudbees.com/job/web</url>
-	</ciManagement>
+	<url>https://github.com/mcasperson/sonar-web/</url>
 
 	<scm>
-		<connection>scm:git:git@github.com:SonarCommunity/sonar-web.git</connection>
-		<developerConnection>scm:git:git@github.com:SonarCommunity/sonar-web.git</developerConnection>
-		<url>https://github.com/SonarCommunity/sonar-web</url>
+		<connection>scm:git:git@github.com:mcasperson/sonar-web.git</connection>
+		<developerConnection>scm:git:git@github.com:mcasperson/sonar-web.git</developerConnection>
+		<url>https://github.com/mcasperson/sonar-web/</url>
 		<tag>HEAD</tag>
 	</scm>
 
@@ -59,6 +51,10 @@
 			<id>dbolkensteyn</id>
 			<name>Dinesh Bolkensteyn</name>
 			<organization>SonarSource</organization>
+		</developer>
+		<developer>
+			<id>mcasperson</id>
+			<name>Matthew Casperson</name>
 		</developer>
 	</developers>
 

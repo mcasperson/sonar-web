@@ -26,22 +26,17 @@ import org.sonar.plugins.web.rules.BaseProfileDefinition;
  */
 public class TestProfileWithAllRules extends BaseProfileDefinition {
 
-  public TestProfileWithAllRules(RuleFinder ruleFinder) {
-    super(ruleFinder);
-  }
+	public TestProfileWithAllRules(RuleFinder ruleFinder) {
+		super(ruleFinder);
+	}
 
-  @Override
-  protected boolean isActive(Class ruleClass) {
-    return true;
-  }
+	@Override
+	protected String getLanguageKey() {
+		return WebConstants.LANGUAGE_KEY;
+	}
 
-  @Override
-  protected String getLanguageKey() {
-    return WebConstants.LANGUAGE_KEY;
-  }
-
-  @Override
-  protected String getRepositoryKey() {
-    return WebConstants.LANGUAGE_NAME;
-  }
+	@Override
+	protected String getRepositoryKey() {
+		return WebConstants.LANGUAGE_NAME;
+	}
 }

@@ -19,17 +19,17 @@ package org.sonar.plugins.web.api;
 
 public class WebConstants {
 
-  /** The language key. */
-  public static final String LANGUAGE_KEY = "web";
-  public static final String LANGUAGE_NAME = "Web";
+	/** The language key. */
+	public static final String LANGUAGE_KEY = "agweb";
+	public static final String LANGUAGE_NAME = "AGWeb";
 
-  // ================ Plugin properties ================
+	// ================ Plugin properties ================
 
-  public static final String FILE_EXTENSIONS_PROP_KEY = "sonar.web.file.suffixes";
-  public static final String OLD_FILE_EXTENSIONS_PROP_KEY = "sonar.web.fileExtensions";
-  public static final String FILE_EXTENSIONS_DEF_VALUE = ".html,.xhtml,.rhtml,.shtml";
+	public static final String FILE_EXTENSIONS_PROP_KEY = "sonar.web.file.suffixes";
+	public static final String OLD_FILE_EXTENSIONS_PROP_KEY = "sonar.web.fileExtensions";
+	public static final String FILE_EXTENSIONS_DEF_VALUE = ".html,.xhtml,.rhtml,.shtml";
 
-  private WebConstants() {
-  }
+	private WebConstants() {
+	}
 
 }

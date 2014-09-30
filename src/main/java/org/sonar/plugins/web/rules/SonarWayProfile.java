@@ -18,32 +18,24 @@
 package org.sonar.plugins.web.rules;
 
 import org.sonar.api.rules.RuleFinder;
-import org.sonar.api.utils.AnnotationUtils;
 import org.sonar.plugins.web.api.WebConstants;
-import org.sonar.plugins.web.checks.WebRule;
 
 /**
  * Sonar way profile for the Web language
  */
 public final class SonarWayProfile extends BaseProfileDefinition {
 
-  public SonarWayProfile(RuleFinder ruleFinder) {
-    super(ruleFinder);
-  }
+	public SonarWayProfile(RuleFinder ruleFinder) {
+		super(ruleFinder);
+	}
 
-  @Override
-  protected boolean isActive(Class ruleClass) {
-    WebRule ruleAnnotation = AnnotationUtils.getAnnotation(ruleClass, WebRule.class);
-    return ruleAnnotation != null && ruleAnnotation.activeByDefault();
-  }
+	@Override
+	protected String getLanguageKey() {
+		return WebConstants.LANGUAGE_KEY;
+	}
 
-  @Override
-  protected String getLanguageKey() {
-    return WebConstants.LANGUAGE_KEY;
-  }
-
-  @Override
-  protected String getRepositoryKey() {
-    return WebConstants.LANGUAGE_NAME;
-  }
+	@Override
+	protected String getRepositoryKey() {
+		return WebConstants.LANGUAGE_NAME;
+	}
 }

@@ -17,39 +17,35 @@
  */
 package org.sonar.plugins.web.rules;
 
-import com.google.common.collect.Lists;
+import java.util.List;
+
 import org.sonar.api.rules.Rule;
 import org.sonar.api.rules.RuleRepository;
 import org.sonar.api.utils.AnnotationUtils;
 import org.sonar.plugins.web.api.WebConstants;
 import org.sonar.plugins.web.checks.RuleTags;
-import org.sonar.plugins.web.checks.WebRule;
 
-import java.util.List;
+import com.google.common.collect.Lists;
 
 public final class WebRulesRepository extends RuleRepository {
 
-  public static final String REPOSITORY_KEY = WebConstants.LANGUAGE_NAME;
+	public static final String REPOSITORY_KEY = WebConstants.LANGUAGE_NAME;
 
-  public WebRulesRepository() {
-    super(REPOSITORY_KEY, WebConstants.LANGUAGE_KEY);
-    setName("SonarQube");
-  }
+	public WebRulesRepository() {
+		super(REPOSITORY_KEY, WebConstants.LANGUAGE_KEY);
+		setName("A&G");
+	}
 
-  @Override
-  public List<Rule> createRules() {
-    List<Rule> result = Lists.newArrayList();
-    for (Class ruleClass : CheckClasses.getCheckClasses()) {
-      if (AnnotationUtils.getAnnotation(ruleClass, WebRule.class) != null) {
-        result.add(RuleRepositoryHelper.createRule(
-          REPOSITORY_KEY,
-          ruleClass,
-          AnnotationUtils.getAnnotation(ruleClass, org.sonar.check.Rule.class),
-          AnnotationUtils.getAnnotation(ruleClass, RuleTags.class)
-        ));
-      }
-    }
-    return result;
-  }
+	@Override
+	public List<Rule> createRules() {
+		List<Rule> result = Lists.newArrayList();
+		for (Class ruleClass : CheckClasses.getCheckClasses()) {
+			if (AnnotationUtils.getAnnotation(ruleClass, org.sonar.check.Rule.class) != null) {
+				result.add(RuleRepositoryHelper.createRule(REPOSITORY_KEY, ruleClass, AnnotationUtils.getAnnotation(ruleClass, org.sonar.check.Rule.class),
+						AnnotationUtils.getAnnotation(ruleClass, RuleTags.class)));
+			}
+		}
+		return result;
+	}
 
 }

@@ -19,38 +19,26 @@ package org.sonar.plugins.web.rules;
 
 import org.sonar.api.profiles.ProfileDefinition;
 import org.sonar.api.profiles.RulesProfile;
-import org.sonar.api.rules.Rule;
-import org.sonar.api.rules.RuleAnnotationUtils;
 import org.sonar.api.rules.RuleFinder;
 import org.sonar.api.utils.ValidationMessages;
 
 public abstract class BaseProfileDefinition extends ProfileDefinition {
 
-  private static final String NAME = "Sonar way";
+	private static final String NAME = "A&G Way";
 
-  private final RuleFinder ruleFinder;
+	private final RuleFinder ruleFinder;
 
-  public BaseProfileDefinition(RuleFinder ruleFinder) {
-    this.ruleFinder = ruleFinder;
-  }
+	public BaseProfileDefinition(RuleFinder ruleFinder) {
+		this.ruleFinder = ruleFinder;
+	}
 
-  @Override
-  public final RulesProfile createProfile(ValidationMessages validation) {
-    RulesProfile profile = RulesProfile.create(NAME, getLanguageKey());
-    for (Class ruleClass : CheckClasses.getCheckClasses()) {
-      String ruleKey = RuleAnnotationUtils.getRuleKey(ruleClass);
-      if (isActive(ruleClass)) {
-        Rule rule = ruleFinder.findByKey(getRepositoryKey(), ruleKey);
-        profile.activateRule(rule, null);
-      }
-    }
-    return profile;
-  }
+	@Override
+	public final RulesProfile createProfile(ValidationMessages validation) {
+		return RulesProfile.create(NAME, getLanguageKey());
+	}
 
-  protected abstract boolean isActive(Class ruleClass);
+	protected abstract String getLanguageKey();
 
-  protected abstract String getLanguageKey();
-
-  protected abstract String getRepositoryKey();
+	protected abstract String getRepositoryKey();
 
 }

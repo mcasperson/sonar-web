@@ -1,19 +1,5 @@
-Sonar Web
-=========
-
-This is the SonarQube Web Plugin
-
-Project homepage:
-http://docs.codehaus.org/display/SONAR/Web+Plugin
-
-Issue tracking:
-http://jira.codehaus.org/browse/SONARPLUGINS/component/14423
-
-CI builds:
-http://sonarplugins.ci.cloudbees.com/job/web
-
-How to Create a Custom Check
-============================
+How to Create a Custom SonarQube Check
+======================================
 
 Create a new class under org.sonar.plugins.web.checks. Use one of the existing classes as a template.
 

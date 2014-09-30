@@ -8,18 +8,18 @@
 		<version>18</version>
 	</parent>
 
-	<artifactId>sonar-web-plugin</artifactId>
+	<artifactId>sonar-agweb-plugin</artifactId>
 	<packaging>sonar-plugin</packaging>
 	<version>2.4.2-SNAPSHOT</version>
 
-	<name>SonarQube Web Plugin</name>
+	<name>A&amp;G Web Plugin</name>
 	<description>Analyze HTML (also within PHP/Ruby/etc. templates) and JSP/JSF code.</description>
 
 	<properties>
 		<sonar.version>3.7</sonar.version>
 		<license.name>AL2</license.name>
 		<sonar.pluginName>AGWeb</sonar.pluginName>
-		<sonar.pluginClass>org.sonar.plugins.web.WebPlugin</sonar.pluginClass>
+		<sonar.pluginClass>org.sonar.plugins.agweb.WebPlugin</sonar.pluginClass>
 	</properties>
 
 	<url>http://docs.codehaus.org/display/SONAR/Web+Plugin</url>

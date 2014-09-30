@@ -22,7 +22,7 @@ public class LineLengthCheck extends AbstractPageCheck {
 	/**
 	 * The default maximum line length
 	 */
-	private static final int MAX_LINE_LENGTH = 120;
+	public static final int MAX_LINE_LENGTH = 120;
 
 	/**
 	 * The line length exposed as a user configurable property

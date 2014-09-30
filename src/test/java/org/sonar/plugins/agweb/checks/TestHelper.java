@@ -17,10 +17,12 @@
  */
 package org.sonar.plugins.agweb.checks;
 
-import com.google.common.base.Charsets;
-import com.google.common.base.Throwables;
-import com.google.common.collect.ImmutableList;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.List;
 
+import org.sonar.api.resources.Directory;
 import org.sonar.plugins.agweb.analyzers.ComplexityVisitor;
 import org.sonar.plugins.agweb.analyzers.PageCountLines;
 import org.sonar.plugins.agweb.lex.PageLexer;
@@ -29,32 +31,31 @@ import org.sonar.plugins.agweb.visitor.DefaultNodeVisitor;
 import org.sonar.plugins.agweb.visitor.HtmlAstScanner;
 import org.sonar.plugins.agweb.visitor.WebSourceCode;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.List;
+import com.google.common.base.Charsets;
+import com.google.common.base.Throwables;
+import com.google.common.collect.ImmutableList;
 
 public class TestHelper {
 
-  private TestHelper() {
-  }
+	private TestHelper() {
+	}
 
-  public static WebSourceCode scan(File file, DefaultNodeVisitor visitor) {
-    FileReader fileReader;
-    try {
-      fileReader = new FileReader(file);
-    } catch (FileNotFoundException e) {
-      throw Throwables.propagate(e);
-    }
-    PageLexer lexer = new PageLexer();
-    List<Node> nodes = lexer.parse(fileReader);
-    WebSourceCode result = new WebSourceCode(file, new org.sonar.api.resources.File("test"));
+	public static WebSourceCode<Directory> scan(File file, DefaultNodeVisitor visitor) {
+		FileReader fileReader;
+		try {
+			fileReader = new FileReader(file);
+		} catch (FileNotFoundException e) {
+			throw Throwables.propagate(e);
+		}
+		PageLexer lexer = new PageLexer();
+		List<Node> nodes = lexer.parse(fileReader);
+		WebSourceCode<Directory> result = new WebSourceCode<Directory>(file, new org.sonar.api.resources.File("test"));
 
-    HtmlAstScanner walker = new HtmlAstScanner(ImmutableList.of(new PageCountLines(), new ComplexityVisitor()));
-    walker.addVisitor(visitor);
-    walker.scan(nodes, result, Charsets.UTF_8);
+		HtmlAstScanner walker = new HtmlAstScanner(ImmutableList.of(new PageCountLines(), new ComplexityVisitor()));
+		walker.addVisitor(visitor);
+		walker.scan(nodes, result, Charsets.UTF_8);
 
-    return result;
-  }
+		return result;
+	}
 
 }

@@ -1,2 +1,0 @@
-<foo />
-<jsp:include page="..." />

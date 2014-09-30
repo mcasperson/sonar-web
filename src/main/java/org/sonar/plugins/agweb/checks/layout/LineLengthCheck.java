@@ -30,6 +30,13 @@ public class LineLengthCheck extends AbstractPageCheck {
 	@RuleProperty(key = "Line Length", defaultValue = "" + MAX_LINE_LENGTH)
 	public int maxLength = MAX_LINE_LENGTH;
 
+	/**
+	 * Listen to the startDocument event and scan through the list of nodes looking
+	 * for any node that has a line length greater than the allowed maximum.
+	 * 
+	 * @param nodes
+	 *            The nodes found in the JSP file
+	 */
 	@Override
 	public void startDocument(final List<Node> nodes) {
 		for (final Node node : nodes) {

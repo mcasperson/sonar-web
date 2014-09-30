@@ -1,3 +1,5 @@
+Based on the plugin at https://github.com/SonarCommunity/sonar-web
+
 How to Create a Custom SonarQube Check
 ======================================
 
